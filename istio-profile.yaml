@@ -1,0 +1,14 @@
+apiVersion: install.istio.io/v1alpha1
+kind: IstioOperator
+spec:
+  meshConfig:
+    enableTracing: true
+    defaultConfig:
+      tracing:
+        sampling: 100
+        zipkin:
+          address: tempo.tracing.svc.cluster.local:9411
+  values:
+    global:
+      proxy:
+        tracer: "zipkin"
